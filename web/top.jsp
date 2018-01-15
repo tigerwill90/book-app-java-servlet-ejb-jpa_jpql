@@ -37,13 +37,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/books">Livres</a>
                     </li>
                 </ul>
-                <a href="/login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Connexion</a>
+                <%
+                    if(request.isUserInRole("tomee-admin")) {
+                        out.print("<a href=\"/logout\" class=\"btn btn-primary btn-lg active\" role=\"button\" aria-pressed=\"true\">Deconnexion</a>");
+                    } else {
+                       out.print("<a href=\"/login\" class=\"btn btn-primary btn-lg active\" role=\"button\" aria-pressed=\"true\">Connexion</a>");
+                    }
+                %>
             </div>
         </nav>
-        <div class="container">
+        <div class="container" style="padding-top: 10%;">

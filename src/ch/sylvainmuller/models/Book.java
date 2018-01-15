@@ -1,15 +1,15 @@
 package ch.sylvainmuller.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Book implements Serializable{
+//@Table(name="T_BOOK")
+public class Book {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=IDENTITY)
     private Long id;
 
     private String title;
@@ -20,6 +20,8 @@ public class Book implements Serializable{
 
     private String year;
 
+
+    public void Book() {}
     /**
      * Constructor
      *
@@ -111,5 +113,16 @@ public class Book implements Serializable{
      */
     public void setYear(String year) {
         this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", editor='" + editor + '\'' +
+                ", year='" + year + '\'' +
+                '}';
     }
 }
