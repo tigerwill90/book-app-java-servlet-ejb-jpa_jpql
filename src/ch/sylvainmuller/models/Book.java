@@ -2,14 +2,18 @@ package ch.sylvainmuller.models;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-//@Table(name="T_BOOK")
-public class Book {
+//@Table(name="Book")
+public class Book implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy=IDENTITY)
+    @GeneratedValue
     private Long id;
 
     private String title;
@@ -18,22 +22,29 @@ public class Book {
 
     private String editor;
 
-    private String year;
+    private Date year;
 
-
-    public void Book() {}
     /**
      * Constructor
      *
-     * @param id
      * @param title
      * @param author
      * @param editor
      * @param year
      */
-    public void Book(Long id, String title, String author, String editor, String year) {
-        this.id = id; this.title = title; this.author = author; this.editor = editor; this.year = year;
+    public Book(String title, String author, String editor, Date year) {
+        super();
+        this.title = title;
+        this.author = author;
+        this.editor = editor;
+        this.year = year;
+
     }
+
+    /**
+     * Empty Constructor
+     */
+    public Book() {}
 
     /**
      * Get id
@@ -103,7 +114,7 @@ public class Book {
      * Get year
      * @return
      */
-    public String getYear() {
+    public Date getYear() {
         return year;
     }
 
@@ -111,7 +122,7 @@ public class Book {
      * Set year
      * @param year
      */
-    public void setYear(String year) {
+    public void setYear(Date year) {
         this.year = year;
     }
 
@@ -122,7 +133,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", editor='" + editor + '\'' +
-                ", year='" + year + '\'' +
+                ", year=" + year +
                 '}';
     }
 }

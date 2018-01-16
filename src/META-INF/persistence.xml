@@ -3,10 +3,10 @@
 
     <persistence-unit name="books-unit">
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <class>ch.sylvainmuller.models.Book</class>
         <properties>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
             <property name="openjpa.Log" value="DefaultLevel=TRACE, Tool=INFO"/>
-            <property name="tomee.jpa.factory.lazy" value="true" />
         </properties>
     </persistence-unit>
 </persistence>

@@ -3,9 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <display-name>Library</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Security</web-resource-name>
+            <web-resource-name>PROTECTED AREA</web-resource-name>
+            <description>Require users to authenticate</description>
             <url-pattern>/login</url-pattern>
         </web-resource-collection>
         <auth-constraint>
