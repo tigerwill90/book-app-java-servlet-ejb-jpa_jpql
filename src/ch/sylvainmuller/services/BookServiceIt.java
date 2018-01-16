@@ -8,11 +8,11 @@ import java.util.List;
 @Local
 public interface BookServiceIt {
 
-    public boolean init();
+    public void init();
 
     public List<Book> getBooks();
 
-    public Book newBooks(Book book);
+    public void newBooks(Book book);
 
     public void deleteBook(int id);
 

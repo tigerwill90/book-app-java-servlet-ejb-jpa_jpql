@@ -41,6 +41,13 @@ public class Book implements Serializable {
 
     }
 
+    public Book(String title, String author, String editor) {
+        super();
+        this.title = title;
+        this.author = author;
+        this.editor = editor;
+    }
+
     /**
      * Empty Constructor
      */

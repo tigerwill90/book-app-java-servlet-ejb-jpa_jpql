@@ -6,6 +6,7 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <jsp:include page="top.jsp" />
 
     <form class="form col-md-12 center-block" action="/create" method="POST">
@@ -20,7 +21,7 @@
             <input type="text" class="form-control input-lg" placeholder="Editeur" name="editor">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Année" name="year">
+            <input type="text" class="form-control input-lg" placeholder="Année" name="year" minlength="4" maxlength="4" size="4">
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Créer</button>

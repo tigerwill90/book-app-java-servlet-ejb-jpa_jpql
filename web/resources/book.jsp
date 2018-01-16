@@ -8,10 +8,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="top.jsp" />
 
 <div class="container">
+    <c:if test="${notif}">
+        <div class="alert alert-success">
+            <strong>Livre ajouté :</strong> Le nouveau livre <c:out value="${addedBook.title}"></c:out> est maintenant disponnible dans la bibliothèques.
+        </div>
+    </c:if>
     <h2>Liste des livres</h2>
     <% request.setAttribute("isAuthenticated", request.isUserInRole("tomee-admin")); %>
     <c:if test="${!requestScope.isAuthenticated}">
@@ -33,7 +39,7 @@
                     <td><c:out value="${book.title}" /></td>
                     <td><c:out value="${book.author}" /></td>
                     <td><c:out value="${book.editor}" /></td>
-                    <td><c:out value="${book.year}" /></td>
+                    <td><fmt:formatDate value="${book.year}" pattern="yyyy" /></td>
                     <td><a href="books?id=${book.id}"
                            class="btn btn-danger" type="button">Supprimer</a>
                     </td>

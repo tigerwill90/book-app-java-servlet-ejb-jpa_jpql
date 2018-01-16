@@ -2,6 +2,7 @@ package ch.sylvainmuller.controller;
 
 import ch.sylvainmuller.models.Book;
 import ch.sylvainmuller.services.BookServiceIt;
+import ch.sylvainmuller.utility.utility;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -22,24 +23,33 @@ public class NewBookController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("newBook.jsp").forward(request, response);
+        request.getRequestDispatcher("/resources/newBook.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String title = request.getParameter("title");
         String author = request.getParameter("author");
         String editor = request.getParameter("editor");
-        Date year = new Date(Integer.parseInt(request.getParameter("year")));
+        String strYear = request.getParameter("year");
 
-        Book book = new Book(title, author, editor, year);
+        Book book;
+        if (utility.isNumeric(strYear) && strYear != null && !strYear.isEmpty()) {
+            Date year = utility.intYearToYearDate(Integer.parseInt(strYear));
+            book = new Book(title, author, editor, year);
+        } else {
+            book = new Book(title, author, editor);
+        }
 
         bookService.newBooks(book);
 
         List<Book> books = bookService.getBooks();
 
         request.setAttribute("books", books);
-        request.getRequestDispatcher("book.jsp").forward(request, response);
+        request.setAttribute("notif", true);
+        request.setAttribute("addedBook", book);
+        request.getRequestDispatcher("/resources/book.jsp").forward(request, response);
 
     }
 }

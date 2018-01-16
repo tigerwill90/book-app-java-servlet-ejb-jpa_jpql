@@ -1,6 +1,7 @@
 package ch.sylvainmuller.services;
 
 import ch.sylvainmuller.models.Book;
+import ch.sylvainmuller.utility.utility;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,22 +17,18 @@ public class BookService implements BookServiceIt {
     /**
      * Mock data on start
      */
-    public boolean init() {
+    public void init() {
         ArrayList<Book> books = new ArrayList<Book>()
                 {{
-                    add(new Book("Croisière sans escale", "Brian Aldiss", "Brian Aldiss", new Date(1958)));
-                    add(new Book("La Patrouille du temps", "Poul Anderson", "Bélial", new Date(1960)));
-                    add(new Book("Le monde s'effondre", "Chinua Achebe", "Éditions Présence africaine", new Date(1958)));
+                    add(new Book("Croisière sans escale", "Brian Aldiss", "Brian Aldiss", utility.intYearToYearDate(1958)));
+                    add(new Book("La Patrouille du temps", "Poul Anderson", "Bélial", utility.intYearToYearDate(1960)));
+                    add(new Book("Le monde s'effondre", "Chinua Achebe", "Éditions Présence africaine", utility.intYearToYearDate(1958)));
                 }};
-        List<Book> currentBooks = getBooks();
-        if (currentBooks.isEmpty()) {
-            for (Book book : books) {
-                em.persist(book);
 
-            }
-            return true;
+        for (Book book : books) {
+            em.persist(book);
+
         }
-        return false;
     }
 
     /**
@@ -47,9 +44,8 @@ public class BookService implements BookServiceIt {
      * @param book
      * @return
      */
-    public Book newBooks(Book book) {
+    public void newBooks(Book book) {
         em.persist(book);
-        return book;
     }
 
     /**
