@@ -37,19 +37,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Accueil </a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/">Accueil </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/books">Livres</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/books">Livres</a>
                     </li>
                 </ul>
                 <% request.setAttribute("isAuthenticated", request.isUserInRole("tomee-admin")); %>
                 <c:choose>
                     <c:when test="${!requestScope.isAuthenticated}">
-                        <a href="/login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Connexion</a>
+                        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Connexion</a>
                     </c:when>
                     <c:otherwise>
-                        <a href="/logout" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Deconnexion</a>
+                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Deconnexion</a>
                     </c:otherwise>
                 </c:choose>
             </div>

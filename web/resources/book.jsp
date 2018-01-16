@@ -40,7 +40,7 @@
                     <td><c:out value="${book.author}" /></td>
                     <td><c:out value="${book.editor}" /></td>
                     <td><fmt:formatDate value="${book.year}" pattern="yyyy" /></td>
-                    <td><a href="books?id=${book.id}"
+                    <td><a href="${pageContext.request.contextPath}/books?id=${book.id}"
                            class="btn btn-danger" type="button">Supprimer</a>
                     </td>
                 </tr>
@@ -51,7 +51,7 @@
 </div>
 <c:if test="${requestScope.isAuthenticated}">
     <div class="pull-right">
-        <a href="/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Nouveau</a>
+        <a href="${pageContext.request.contextPath}/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Nouveau</a>
     </div>
 </c:if>
 
