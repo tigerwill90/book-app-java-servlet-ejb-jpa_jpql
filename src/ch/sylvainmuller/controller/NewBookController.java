@@ -2,7 +2,7 @@ package ch.sylvainmuller.controller;
 
 import ch.sylvainmuller.models.Book;
 import ch.sylvainmuller.services.BookServiceIt;
-import ch.sylvainmuller.utility.utility;
+import ch.sylvainmuller.utility.Utility;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -35,8 +35,8 @@ public class NewBookController extends HttpServlet {
         String strYear = request.getParameter("year");
 
         Book book;
-        if (utility.isNumeric(strYear) && strYear != null && !strYear.isEmpty()) {
-            Date year = utility.intYearToYearDate(Integer.parseInt(strYear));
+        if (Utility.isNumeric(strYear) && strYear != null && !strYear.isEmpty()) {
+            Date year = Utility.intYearToYearDate(Integer.parseInt(strYear));
             book = new Book(title, author, editor, year);
         } else {
             book = new Book(title, author, editor);

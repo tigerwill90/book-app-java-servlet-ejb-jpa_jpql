@@ -5,7 +5,7 @@ import java.text.ParsePosition;
 import java.util.Calendar;
 import java.util.Date;
 
-public class utility {
+public class Utility {
 
     public static Date intYearToYearDate(int year) {
         Calendar calendar = Calendar.getInstance();

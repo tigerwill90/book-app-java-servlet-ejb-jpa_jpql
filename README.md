@@ -1,6 +1,6 @@
-# Simple library web app - Java EE 8 - Servlet
+# Simple library web app - Java EE - Servlet with EJB and JPA_JPQL 
 
-This is a simple library application, using java EE 8, Servlet, JSP and OpenJPA with TomEE
+This is a simple library application, using java EE, Servlet, JSP and OpenJPA on TomEE.
 
 #### Getting Started
 

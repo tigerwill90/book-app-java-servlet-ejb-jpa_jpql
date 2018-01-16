@@ -1,7 +1,7 @@
 package ch.sylvainmuller.services;
 
 import ch.sylvainmuller.models.Book;
-import ch.sylvainmuller.utility.utility;
+import ch.sylvainmuller.utility.Utility;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,9 +20,9 @@ public class BookService implements BookServiceIt {
     public void init() {
         ArrayList<Book> books = new ArrayList<Book>()
                 {{
-                    add(new Book("Croisière sans escale", "Brian Aldiss", "Brian Aldiss", utility.intYearToYearDate(1958)));
-                    add(new Book("La Patrouille du temps", "Poul Anderson", "Bélial", utility.intYearToYearDate(1960)));
-                    add(new Book("Le monde s'effondre", "Chinua Achebe", "Éditions Présence africaine", utility.intYearToYearDate(1958)));
+                    add(new Book("Croisière sans escale", "Brian Aldiss", "Brian Aldiss", Utility.intYearToYearDate(1958)));
+                    add(new Book("La Patrouille du temps", "Poul Anderson", "Bélial", Utility.intYearToYearDate(1960)));
+                    add(new Book("Le monde s'effondre", "Chinua Achebe", "Éditions Présence africaine", Utility.intYearToYearDate(1958)));
                 }};
 
         for (Book book : books) {
