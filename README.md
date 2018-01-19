@@ -7,7 +7,3 @@ This is a simple library application, using java EE, Servlet, JSP and OpenJPA on
 ````
     Clone or download repository
 ````
-
-#### Testing
-
-Coming soon
