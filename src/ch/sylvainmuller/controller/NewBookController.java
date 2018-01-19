@@ -16,6 +16,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/create")
 public class NewBookController extends HttpServlet {
+
+    /** Universal version identifier for Serializable class */
     private static final long serialVersionUID = 1L;
 
     @EJB
@@ -23,17 +25,19 @@ public class NewBookController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/resources/newBook.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/newBook.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        /** Fetch data */
         String title = request.getParameter("title");
         String author = request.getParameter("author");
         String editor = request.getParameter("editor");
         String strYear = request.getParameter("year");
 
+        /** Check if year is numeric and create new book consequently */
         Book book;
         if (Utility.isNumeric(strYear) && strYear != null && !strYear.isEmpty()) {
             Date year = Utility.intYearToYearDate(Integer.parseInt(strYear));
@@ -48,8 +52,8 @@ public class NewBookController extends HttpServlet {
 
         request.setAttribute("books", books);
         request.setAttribute("notif", true);
-        request.setAttribute("addedBook", book);
-        request.getRequestDispatcher("/resources/book.jsp").forward(request, response);
+        request.setAttribute("bookTitle", book.getTitle());
+        request.getRequestDispatcher("/WEB-INF/views/book.jsp").forward(request, response);
 
     }
 }

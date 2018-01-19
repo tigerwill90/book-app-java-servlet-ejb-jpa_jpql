@@ -7,6 +7,11 @@ import java.util.Date;
 
 public class Utility {
 
+    /**
+     * Create new date "yyyy" from int
+     * @param year
+     * @return
+     */
     public static Date intYearToYearDate(int year) {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
@@ -15,6 +20,11 @@ public class Utility {
         return date;
     }
 
+    /**
+     * Check if string is numeric value (generally from textfield)
+     * @param str
+     * @return
+     */
     public static boolean isNumeric(String str) {
         NumberFormat formatter = NumberFormat.getInstance();
         ParsePosition pos = new ParsePosition(0);

@@ -15,7 +15,7 @@
 <div class="container">
     <c:if test="${notif}">
         <div class="alert alert-success">
-            <strong>Livre ajouté :</strong> Le nouveau livre <c:out value="${addedBook.title}"></c:out> est maintenant disponnible dans la bibliothèques.
+            <strong>Livre ajouté :</strong> Le nouveau livre <c:out value="${bookTitle}"></c:out> est maintenant disponnible dans la bibliothèques.
         </div>
     </c:if>
     <h2>Liste des livres</h2>
@@ -30,6 +30,7 @@
             <th>Auteur</th>
             <th>Editeur</th>
             <th>Année</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>

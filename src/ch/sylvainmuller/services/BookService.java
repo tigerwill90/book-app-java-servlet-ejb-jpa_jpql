@@ -15,7 +15,7 @@ public class BookService implements BookServiceIt {
     private EntityManager em;
 
     /**
-     * Mock data on start
+     * Mock data
      */
     public void init() {
         ArrayList<Book> books = new ArrayList<Book>()

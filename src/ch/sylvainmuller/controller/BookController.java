@@ -13,13 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/books", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/books", loadOnStartup = 0)
 public class BookController extends HttpServlet {
+
+    /** Universal version identifier for Serializable class */
     private static final long serialVersionUID = 1L;
 
     @EJB
     private BookServiceIt bookService;
 
+    /**
+     * Mocking data on start up by loading servlet in higher priority
+     * @param config
+     */
     public void init(ServletConfig config) {
         bookService.init();
         System.out.println("Data initialized");
@@ -40,7 +46,7 @@ public class BookController extends HttpServlet {
 
         /** Set attribute and forward */
         request.setAttribute("books", books);
-        request.getRequestDispatcher("/resources/book.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/book.jsp").forward(request, response);
     }
 
 

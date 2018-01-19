@@ -5,7 +5,7 @@
   Time: 16:23
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="resources/top.jsp" />
+<jsp:include page="/WEB-INF/views/top.jsp" />
 
             <div class="row">
                 <div class="col-sm">
@@ -16,4 +16,4 @@
                 </div>
             </div>
 
-<jsp:include page="resources/bottom.jsp" />
+<jsp:include page="/WEB-INF/views/bottom.jsp" />

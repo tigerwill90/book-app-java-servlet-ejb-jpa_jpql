@@ -12,13 +12,13 @@
     <form class="form col-md-12 center-block" action="${pageContext.request.contextPath}/create" method="POST">
         <legend>Créer un livre</legend>
         <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Titre" name="title">
+            <input type="text" class="form-control input-lg" placeholder="Titre" name="title" required="true">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Auteur" name="author">
+            <input type="text" class="form-control input-lg" placeholder="Auteur" name="author" required="true">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Editeur" name="editor">
+            <input type="text" class="form-control input-lg" placeholder="Editeur" name="editor" required="true">
         </div>
         <div class="form-group">
             <input type="text" class="form-control input-lg" placeholder="Année" name="year" minlength="4" maxlength="4" size="4">

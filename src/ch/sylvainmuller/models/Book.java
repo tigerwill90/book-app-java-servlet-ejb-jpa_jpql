@@ -10,6 +10,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 //@Table(name="Book")
 public class Book implements Serializable {
+
+    /** Universal version identifier for Serializable class */
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -41,6 +43,13 @@ public class Book implements Serializable {
 
     }
 
+    /**
+     * Constructor without date
+     *
+     * @param title
+     * @param author
+     * @param editor
+     */
     public Book(String title, String author, String editor) {
         super();
         this.title = title;
