@@ -21,7 +21,7 @@
     <h2>Liste des livres</h2>
     <% request.setAttribute("isAuthenticated", request.isUserInRole("tomee-admin")); %>
     <c:if test="${!requestScope.isAuthenticated}">
-        <p>Vous devez vous authentifier pour consulter ou créer de nouveaux livres ! </p>
+        <p>Vous devez vous authentifier pour créer ou supprimer des livres ! </p>
     </c:if>
     <table class="table">
         <thead>
@@ -30,23 +30,25 @@
             <th>Auteur</th>
             <th>Editeur</th>
             <th>Année</th>
-            <th></th>
+            <c:if test="${requestScope.isAuthenticated}">
+                <th></th>
+            </c:if>
         </tr>
         </thead>
         <tbody>
-        <c:if test="${requestScope.isAuthenticated}">
-            <c:forEach items="${books}" var="book">
-                <tr>
-                    <td><c:out value="${book.title}" /></td>
-                    <td><c:out value="${book.author}" /></td>
-                    <td><c:out value="${book.editor}" /></td>
-                    <td><fmt:formatDate value="${book.year}" pattern="yyyy" /></td>
+        <c:forEach items="${books}" var="book">
+            <tr>
+                <td><c:out value="${book.title}" /></td>
+                <td><c:out value="${book.author}" /></td>
+                <td><c:out value="${book.editor}" /></td>
+                <td><fmt:formatDate value="${book.year}" pattern="yyyy" /></td>
+                <c:if test="${requestScope.isAuthenticated}">
                     <td><a href="${pageContext.request.contextPath}/books?id=${book.id}"
                            class="btn btn-danger" type="button">Supprimer</a>
                     </td>
-                </tr>
-            </c:forEach>
-        </c:if>
+                </c:if>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

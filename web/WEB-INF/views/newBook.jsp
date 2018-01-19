@@ -9,7 +9,7 @@
 
 <jsp:include page="top.jsp" />
 
-    <form class="form col-md-12 center-block" action="${pageContext.request.contextPath}/create" method="POST">
+    <form class="form col-md-12 center-block" action="${pageContext.request.contextPath}/books" method="POST">
         <legend>Créer un livre</legend>
         <div class="form-group">
             <input type="text" class="form-control input-lg" placeholder="Titre" name="title" required="true">

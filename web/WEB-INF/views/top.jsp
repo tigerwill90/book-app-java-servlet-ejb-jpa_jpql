@@ -46,7 +46,7 @@
                 <c:if test="${not pageContext.request.requestURI.endsWith('login.jsp')}">
                     <% request.setAttribute("isAuthenticated", request.isUserInRole("tomee-admin")); %>
                     <c:choose>
-                        <c:when test="${!requestScope.isAuthenticated && not pageContext.request.requestURI.endsWith('login.jsp')}">
+                        <c:when test="${!requestScope.isAuthenticated}">
                             <a href="${pageContext.request.contextPath}/login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Connexion</a>
                         </c:when>
                         <c:otherwise>
