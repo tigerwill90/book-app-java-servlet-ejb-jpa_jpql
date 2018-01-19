@@ -66,3 +66,7 @@ set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_152
 
 Si tout c'est bien passé, un nouveau répertoire `library` a été créer dans le répertoire `webapps`.
 L'application s'exécute à l'adresse `http://localhost:8080/library/`
+
+##### Version
+
+RC-1.0.2
