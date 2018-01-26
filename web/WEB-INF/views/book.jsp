@@ -6,16 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="top.jsp" />
 
 <div class="container">
-    <c:if test="${notif}">
+    <c:if test="${sessionScope.notif}">
         <div class="alert alert-success">
-            <strong>Livre ajouté :</strong> Le nouveau livre <c:out value="${bookTitle}"></c:out> est maintenant disponnible dans la bibliothèques.
+            <strong>Livre ajouté :</strong> Le nouveau livre <c:out value="${sessionScope.bookTitle}"></c:out> est maintenant disponnible dans la bibliothèques.
         </div>
     </c:if>
     <h2>Liste des livres</h2>
@@ -36,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${books}" var="book">
+        <c:forEach items="${sessionScope.books}" var="book">
             <tr>
                 <td><c:out value="${book.title}" /></td>
                 <td><c:out value="${book.author}" /></td>
@@ -49,6 +48,9 @@
                 </c:if>
             </tr>
         </c:forEach>
+        <c:remove var="books" scope="session" />
+        <c:remove var="notif" scope="session" />
+        <c:remove var="bookTitle" scope="session" />
         </tbody>
     </table>
 </div>

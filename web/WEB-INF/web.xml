@@ -7,6 +7,8 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <!-- SECURITY -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>PROTECTED AREA</web-resource-name>
@@ -27,4 +29,11 @@
     <security-role>
         <role-name>tomee-admin</role-name>
     </security-role>
+
+    <!-- LISTENERS -->
+    <listener>
+        <listener-class>
+            ch.sylvainmuller.listeners.AppContextListener
+        </listener-class>
+    </listener>
 </web-app>

@@ -1,4 +1,4 @@
-package ch.sylvainmuller.utility;
+package ch.sylvainmuller.utilites;
 
 import java.text.NumberFormat;
 import java.text.ParsePosition;

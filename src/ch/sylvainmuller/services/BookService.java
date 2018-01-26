@@ -1,7 +1,7 @@
 package ch.sylvainmuller.services;
 
 import ch.sylvainmuller.models.Book;
-import ch.sylvainmuller.utility.Utility;
+import ch.sylvainmuller.utilites.Utility;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

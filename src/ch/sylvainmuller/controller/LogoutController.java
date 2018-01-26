@@ -1,6 +1,6 @@
 package ch.sylvainmuller.controller;
 
-import static ch.sylvainmuller.utility.Constants.*;
+import static ch.sylvainmuller.utilites.Constants.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
