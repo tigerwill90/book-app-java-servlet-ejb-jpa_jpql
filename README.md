@@ -54,4 +54,4 @@ The application is accessible on `http://localhost:8080/library/`
 
 ##### Version
 
-RC-1.0.2
+RC-1.0.3
