@@ -9,27 +9,10 @@ import javax.persistence.PersistenceContext;
 import java.util.*;
 
 @Stateless
-public class BookService implements BookServiceIt {
+public class BookService {
 
     @PersistenceContext(unitName="books-unit")
     private EntityManager em;
-
-    /**
-     * Mock data
-     */
-    public void init() {
-        ArrayList<Book> books = new ArrayList<Book>()
-                {{
-                    add(new Book("Croisière sans escale", "Brian Aldiss", "Brian Aldiss", Utility.intYearToYearDate(1958)));
-                    add(new Book("La Patrouille du temps", "Poul Anderson", "Bélial", Utility.intYearToYearDate(1960)));
-                    add(new Book("Le monde s'effondre", "Chinua Achebe", "Éditions Présence africaine", Utility.intYearToYearDate(1958)));
-                }};
-
-        for (Book book : books) {
-            em.persist(book);
-
-        }
-    }
 
     /**
      * Get a list of books

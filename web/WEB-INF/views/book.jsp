@@ -15,8 +15,10 @@
     <c:if test="${sessionScope.notif}">
         <div class="alert alert-success">
             <strong>Livre ajouté :</strong> Le nouveau livre <c:out value="${sessionScope.bookTitle}"></c:out> est maintenant disponnible dans la bibliothèques.
+            <c:remove var="bookTitle" scope="session" />
         </div>
     </c:if>
+    <c:remove var="notif" scope="session" />
     <h2>Liste des livres</h2>
     <% request.setAttribute("isAuthenticated", request.isUserInRole("tomee-admin")); %>
     <c:if test="${!requestScope.isAuthenticated}">
@@ -35,7 +37,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${sessionScope.books}" var="book">
+        <c:forEach items="${books}" var="book">
             <tr>
                 <td><c:out value="${book.title}" /></td>
                 <td><c:out value="${book.author}" /></td>
@@ -48,9 +50,6 @@
                 </c:if>
             </tr>
         </c:forEach>
-        <c:remove var="books" scope="session" />
-        <c:remove var="notif" scope="session" />
-        <c:remove var="bookTitle" scope="session" />
         </tbody>
     </table>
 </div>

@@ -2,7 +2,7 @@ package ch.sylvainmuller.controller;
 
 import static ch.sylvainmuller.utilites.Constants.*;
 import ch.sylvainmuller.models.Book;
-import ch.sylvainmuller.services.BookServiceIt;
+import ch.sylvainmuller.services.BookService;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class BookController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private BookServiceIt bookService;
+    private BookService bookService;
 
     /**
      * Fetch books list in DB and display it
@@ -32,8 +32,6 @@ public class BookController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        HttpSession session = request.getSession(false);
 
         /** Get id of item to delete */
         String param = request.getParameter("id");
@@ -46,7 +44,7 @@ public class BookController extends HttpServlet {
         List<Book> books = bookService.getBooks();
 
         /** Set attribute and forward */
-        session.setAttribute("books", books);
+        request.setAttribute("books", books);
         request.getRequestDispatcher(WEBINF_PATH + "/book.jsp").forward(request, response);
     }
 }

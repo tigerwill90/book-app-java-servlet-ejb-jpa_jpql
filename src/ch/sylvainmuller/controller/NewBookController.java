@@ -3,7 +3,7 @@ package ch.sylvainmuller.controller;
 import static ch.sylvainmuller.utilites.Constants.*;
 
 import ch.sylvainmuller.models.Book;
-import ch.sylvainmuller.services.BookServiceIt;
+import ch.sylvainmuller.services.BookService;
 import ch.sylvainmuller.utilites.Utility;
 
 import javax.ejb.EJB;
@@ -24,26 +24,18 @@ public class NewBookController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private BookServiceIt bookService;
+    private BookService bookService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher(WEBINF_PATH + "/newBook.jsp").forward(request, response);
     }
 
-    /**
-     * Fetch and create new book
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
 
-        /** Fetch data */
         String title = request.getParameter("title");
         String author = request.getParameter("author");
         String editor = request.getParameter("editor");
@@ -62,9 +54,11 @@ public class NewBookController extends HttpServlet {
 
         List<Book> books = bookService.getBooks();
 
-        session.setAttribute("books", books);
         session.setAttribute("notif", true);
         session.setAttribute("bookTitle",book.getTitle());
-        response.sendRedirect(request.getContextPath() + "/books");
+
+        /** Following POST/redirect/GET pattern */
+        response.addHeader("Location", request.getContextPath() + "/books");
+        response.sendError(303);
     }
 }

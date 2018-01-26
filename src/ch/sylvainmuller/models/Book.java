@@ -27,15 +27,12 @@ public class Book implements Serializable {
     private Date year;
 
     /**
-     * Constructor
-     *
      * @param title
      * @param author
      * @param editor
      * @param year
      */
     public Book(String title, String author, String editor, Date year) {
-        super();
         this.title = title;
         this.author = author;
         this.editor = editor;
@@ -44,22 +41,18 @@ public class Book implements Serializable {
     }
 
     /**
-     * Constructor without date
+     * Construct a book when date is invalid or not found in request attribute
      *
      * @param title
      * @param author
      * @param editor
      */
     public Book(String title, String author, String editor) {
-        super();
         this.title = title;
         this.author = author;
         this.editor = editor;
     }
 
-    /**
-     * Empty Constructor
-     */
     public Book() {}
 
     /**
