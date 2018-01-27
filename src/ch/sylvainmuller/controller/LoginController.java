@@ -12,7 +12,6 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends HttpServlet {
 
-    /** Universal version identifier for Serializable class */
     private static final long serialVersionUID = 1L;
 
     @Override

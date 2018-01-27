@@ -17,33 +17,22 @@ import java.util.List;
 @WebServlet(urlPatterns = "/books")
 public class BookController extends HttpServlet {
 
-    /** Universal version identifier for Serializable class */
     private static final long serialVersionUID = 1L;
 
     @EJB
     private BookService bookService;
 
-    /**
-     * Fetch books list in DB and display it
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        /** Get id of item to delete */
         String param = request.getParameter("id");
         if (param != null && !param.isEmpty()) {
             int id = Integer.parseInt(param);
             bookService.deleteBook(id);
         }
 
-        /** Get books collection */
         List<Book> books = bookService.getBooks();
 
-        /** Set attribute and forward */
         request.setAttribute("books", books);
         request.getRequestDispatcher(WEBINF_PATH + "/book.jsp").forward(request, response);
     }
